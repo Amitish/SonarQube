@@ -1,6 +1,6 @@
 trigger: none
 
-pool: mera-agent-pool
+pool: default
 
 steps:
 
