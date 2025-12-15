@@ -5,22 +5,28 @@ pool:
   name: mera-agent-pool
 
 steps:
-- checkout: self
-
-- task: SonarQubePrepare@5
-  displayName: Prepare SonarQube Analysis
+- task: PowerShell@2
   inputs:
-    SonarQube: 'mera-todo-sonar'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'TodoApp'
-    cliProjectName: 'TodoApp'
-    cliSources: '.'
+    targetType: 'inline'
+    script: |
+      sonar-scanner -sonar.projectKey=TodoApp -D sonar.projectName=TodoApp -D sonar.sources=. -D sonar.host.url=http://localhost:9000 -Dvsonar.login=sqa_1260264f412155e86d8c83825d4b3691e7df3999
+        displayName: SonarQube Scan (Community Edition)
 
-- task: SonarQubeAnalyze@5
-  displayName: Run SonarQube Analysis
+# - task: SonarQubePrepare@5
+#   displayName: Prepare SonarQube Analysis
+#   inputs:
+#     SonarQube: 'mera-todo-sonar'
+#     scannerMode: 'CLI'
+#     configMode: 'manual'
+#     cliProjectKey: 'TodoApp'
+#     cliProjectName: 'TodoApp'
+#     cliSources: '.'
+#     extraProperties: 'sonar-scanner -D sonar.projectKey=ToDoApp -D sonar.sources=. -D sonar.host.url=http://localhost:9000 -D sonar.login=sqa_1260264f412155e86d8c83825d4b3691e7df3999"'
 
-- task: SonarQubePublish@5
-  displayName: Publish Quality Gate
-  inputs:
-    pollingTimeoutSec: '300'
+# - task: SonarQubeAnalyze@5
+#   displayName: Run SonarQube Analysis
+
+# - task: SonarQubePublish@5
+#   displayName: Publish Quality Gate
+#   inputs:
+#     pollingTimeoutSec: '300'
