@@ -6,11 +6,12 @@ pool:
 
 steps:
 - task: PowerShell@2
+  displayName: SonarQube Scan (Community Edition)
   inputs:
     targetType: 'inline'
     script: |
       sonar-scanner -D sonar.projectKey=Monotodo -D sonar.projectName=Monotodo -D sonar.sources=. -D sonar.host.url=http://localhost:9000 -D sonar.login=sqa_470e100e10d2d83d4ef605cbd7f909d3a3dedddb
-  displayName: SonarQube Scan (Community Edition)
+
 
 # - task: SonarQubePrepare@5
 #   displayName: Prepare SonarQube Analysis
