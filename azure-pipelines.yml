@@ -1,11 +1,14 @@
 trigger:
 - main
 
-pool: mera-agent-pool
+pool:
+  name: mera-agent-pool
 
 steps:
+- checkout: self
+
 - task: SonarQubePrepare@5
-  displayName: SonarQubePrepare
+  displayName: Prepare SonarQube Analysis
   inputs:
     SonarQube: 'mera-todo-sonar'
     scannerMode: 'CLI'
@@ -15,9 +18,9 @@ steps:
     cliSources: '.'
 
 - task: SonarQubeAnalyze@5
-  displayName: SonarQubeAnalyze
+  displayName: Run SonarQube Analysis
 
 - task: SonarQubePublish@5
-  displayName: SonarQubePublish
+  displayName: Publish Quality Gate
   inputs:
     pollingTimeoutSec: '300'
