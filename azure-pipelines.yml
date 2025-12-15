@@ -9,7 +9,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      sonar-scanner -sonar.projectKey=TodoApp -D sonar.projectName=TodoApp -D sonar.sources=. -D sonar.host.url=http://localhost:9000 -Dvsonar.login=sqa_1260264f412155e86d8c83825d4b3691e7df3999
+      sonar-scanner -D sonar.projectKey=TodoApp -D sonar.projectName=TodoApp -D sonar.sources=. -D sonar.host.url=http://localhost:9000 -Dvsonar.login=sqa_1260264f412155e86d8c83825d4b3691e7df3999
   displayName: SonarQube Scan (Community Edition)
 
 # - task: SonarQubePrepare@5
