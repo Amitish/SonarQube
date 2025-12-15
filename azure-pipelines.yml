@@ -19,10 +19,6 @@ steps:
     cliProjectName: 'TodoApp'
     cliSources: '.'
 
-- script: |
-    npm install
-    npm run build
-  displayName: Build
 
 - task: SonarQubeAnalyze@5
   displayName: Run SonarQube Analysis
