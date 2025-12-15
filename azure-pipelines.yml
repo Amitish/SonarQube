@@ -5,19 +5,22 @@ pool: mera-agent-pool
 steps:
 
 - task: SonarQubePrepare@8
+  displayName: Prepare Analysis Configuration
   inputs:
     SonarQube: 'Todo-ADO-service'
     scannerMode: 'cli'
     configMode: 'manual'
     cliProjectKey: 'Todo-ADO'
     cliProjectName: 'Todo-ADO'
-    cliSources: '.'
+    cliSources: '$(System.DefaultWorkingDirectory)'
 
 - task: SonarQubeAnalyze@8
+  displayName: Run code Analysis
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
 
 - task: SonarQubePublish@8
+  displayName: Publish Quality Gate results
   inputs:
     pollingTimeoutSec: '300'
 
