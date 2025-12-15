@@ -6,9 +6,12 @@ steps:
 
 - task: SonarQubePrepare@8
   inputs:
-    SonarQube: 'sonar-ka-conn'
+    SonarQube: 'Todo-ADO-service'
     scannerMode: 'cli'
-    configMode: 'file'
+    configMode: 'manual'
+    cliProjectKey: 'Todo-ADO'
+    cliProjectName: 'Todo-ADO'
+    cliSources: '.'
 
 - task: SonarQubeAnalyze@8
   inputs:
