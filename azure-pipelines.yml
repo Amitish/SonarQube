@@ -10,8 +10,8 @@ steps:
     SonarQube: 'Todo-ADO-service'
     scannerMode: 'cli'
     configMode: 'manual'
-    cliProjectKey: 'Todo-ADO'
-    cliProjectName: 'Todo-ADO'
+    cliProjectKey: 'To-Do-App'
+    cliProjectName: 'To-Do-App'
     cliSources: '$(System.DefaultWorkingDirectory)'
 
 - task: SonarQubeAnalyze@8
